@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div class="bg">
+        {{msg}}
+    </div>
+
+    <!--优先绑定页面的第一个-->
+    <div class="bg">
+        {{msg}}
+    </div>
+
+    <script>
+        new Vue({
+            el: '.bg',
+            data: {
+                msg: 'Hello vue'
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+
+    <style>
+        .active {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <img v-bind:src="imgSrc">
+        <br/>
+        <img :src="imgSrc" :title="imgTile + '123'" @click="toggleActive()" :class="isActive?'active':''">
+        <br/>
+        <img :src="imgSrc" :class="{active:isActive}" @click="toggleActive()">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgSrc: "http://www.itheima.com/images/logo.png",
+                imgTile: '黑马程序员',
+                isActive: false
+            },
+            methods: {
+                toggleActive: function() {
+                    this.isActive = !this.isActive;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

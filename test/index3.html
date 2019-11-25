@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="bg" v-bind:id="bg1">
+            {{msg}}
+        </div>
+
+        <div class="bg">
+            {{msg}}
+        </div>
+
+        {{ (count+1)*10 }}
+        {{template}}
+
+        <div v-html="template"></div>
+
+        <a v-bind:href="baiduUrl">百度</a>
+
+        <button type="button" v-on:click="submit()">+1</button>
+        <!-- v-bind:可以用:代替  v-on:可以用@代替 -->
+
+        {{msg1}}
+    </div>
+
+    <script>
+        var arr = 'new test'
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello vue',
+                count: 0,
+                template: '<div>Hello Hzb</div>',
+                baiduUrl: 'https://baidu.com',
+                bg1: 'app-bg1-bind'
+            },
+            methods: {
+                submit: function(){
+                    ++this.count;  //注意count值的变化
+                }
+            },
+            //侦听器
+            watch: {
+                //监听msg变量
+                msg: function (newval, oldval) {
+                    console.log('newval is' + newval)
+                    console.log('oldval is' + oldval)
+                }
+            },
+            //计算属性
+            computed: {
+                msg1: function() {
+                    return 'computed:' + this.msg + ',' + arr
+                    //在实例内的值发生变化都会影响msg1的重新运算,实例外的值改变不会重新计算，但以后变化时取的值为新值
+                }
+            }
+            //watch通常监听的是一个变量或一个常量
+            //computed可以监听很多变量,但变量需要在vue实例内
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件渲染</title>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <!-- v-if -->
+    <!-- v-else-if -->
+    <!-- v-else -->
+
+    <!-- v-show -->
+
+    <div id="app">
+        {{msg}}
+        <div v-if="count > 0">
+            count的值大于0，值为{{count}}
+        </div>
+        <div v-else>
+            count的值为{{count}}
+        </div>
+
+        <div v-show="count == -1">show1</div>
+        <div v-show="count == 0">show2</div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: 'Hello',
+                count: 0
+            }
+        })
+    </script>
+</body>
+</html>

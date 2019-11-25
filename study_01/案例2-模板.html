@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <img :src="imgArr[index]">
+        <br/>
+        <input type="button" value="上一张" @click="prev()" v-show="index != 0">
+        <input type="button" value="下一张" @click="next()" v-show="index != imgArr.length - 1">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                imgArr: [
+                    "img/01.jpg",
+                    "img/02.jpg",
+                    "img/03.jpg",
+                    "img/04.jpg",
+                    "img/05.jpg"
+                ],
+                index: 0
+            },
+            methods: {
+                prev: function() {
+                    --this.index;
+                },
+                next: function() {
+                    ++this.index;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

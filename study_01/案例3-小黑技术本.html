@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" placeholder="请输入任务" v-model="inputValue" @keyup.enter="add()">
+
+        <ul>
+            <li v-for="(item, index) in list">
+                <div>
+                    <span>{{ index + 1 }}.</span>
+                    <span>{{ item }}</span>
+                    <button @click="remove(index)">X</button>
+                </div>
+            </li>
+        </ul>
+
+        <br/>
+
+        <p v-if="list.length != 0">{{ list.length }} items left</p>
+        <input v-show="list.length != 0" type="button" value="clear" @click="clear">
+    </div>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list: ['打代码', '吃饭饭', '睡觉觉'],
+                inputValue: ''
+            },
+            methods: {
+                add: function() {
+                    this.list.push(this.inputValue);
+                    this.inputValue = '';
+                },
+                remove: function(index) {
+                    //删除下表为index开始，删除n个
+                    this.list.splice(index, 1);
+                },
+                clear: function() {
+                    this.list = [];
+                }
+            }
+        })
+    </script>
+</body>
+</html>

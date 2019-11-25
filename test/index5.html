@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>列表渲染</title>
+
+    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--循环创建5个div-->
+        <div v-for="item in list">
+            {{item}}
+        </div>
+
+        <div v-for="item in list1">
+            <div v-if="item.age > 20">
+                {{item.name}}
+            </div>
+            <div v-else>
+                {{item.age}}
+            </div>
+        </div>
+                                         <!--键值对，右边为表达式-->
+        <div :class="['active', 'more', {'a1': true}, {'a2': 1 < 6}]" :style="styleMsg">
+            {{msg}}
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                list: [1, 2, 3, 4, 5],
+                list1: [{
+                    name: 'Huang Zebin',
+                    age: 20
+                }, {
+                    name: '黄泽彬',
+                    age: 21
+                }],
+                styleMsg: {
+                    color: 'red',
+                    'text-shadow': '0 0 5px green'  //如果有横杠加单引号,阴影 或者用驼峰写法 textShadow: '0 0 5 px green'
+                },
+                msg: 'Hello Good'
+            }
+        })
+    </script>
+</body>
+</html>
